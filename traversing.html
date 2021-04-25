@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery - Traversing</title>
+</head>
+<body>
+    <ul id="liste">
+        <li>Rümeysa</li>
+        <li>Berivan</li>
+        <li>Zeynep</li>
+        <li>Salim</li>
+        <li>Zeynep</li>
+        <li>Çınar</li>
+        <li>Alperen</li>
+        <li>Buse</li>
+        <li>Batuhan</li>
+    </ul>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+            //Pure JS For ile
+        // var ogeler = document.querySelectorAll("#liste > li");
+        // for (var i = 0; i < ogeler.length; i++)
+        // {
+        //     var ad = ogeler[i].textContent;
+        //     ogeler[i].textContent += ": " + ad.length;
+        // }
+            //Pure JS ForEach ile
+        // ogeler.forEach(function(el, key)
+        // {
+        //     var metin = el.innerText;
+        //     el.innerText += ": " + metin.length;
+        // })
+            //JQuery ile 
+        $("#liste > li").each(function(index, element)
+        {
+            var metin = $(this).text();
+            $(this).append(": " + metin.length);
+        });
+        var dizi = ["Batuhan", "Buse", "Çınar", "Alperen", "Zeynep",];
+        //Bu dizinin elemanlarını bir liste oluşturup içerisine ekle
+        //ve sonra bu listeyi yukarıdaki listenin önüne ekle
+            //Pure JS ile
+        // let ul = document.createElement("ul");
+        // for (const ad of dizi)
+        // {
+        //     let li = document.createElement("li");
+        //     li.innerText = ad;
+        //     ul.appendChild(li);
+        // }
+        // let oncekiul = document.getElementById("liste");
+        // oncekiul.parentNode.insertBefore(ul, oncekiul);
+            //JQuery ile
+        var yeniul = $("<ul/>");
+        $.each(dizi, function(index, ad)
+        {
+            $("<li/>").text(ad).appendTo(yeniul);
+        });
+        yeniul.insertBefore("#liste");
+    </script>
+</body>
+</html>
