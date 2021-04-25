@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery - Closest</title>
+    <style>
+        form
+        {
+            border: 3px, solid, red;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <button type="button"> Buton 1 </button>
+    </form>
+    <form>
+        <div>
+            Lorem, ipsum dolor.
+            <button type="button"> Buton 2 </button>  
+        </div>
+    </form>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        //Bir butona tıklandığında onu içeren ilk formun başına butonun içeriğindeki metni ekle
+        $("button").click(function(){
+            var metin = $(this).text();
+            var enYakınındakiForm = $(this).closest("form"); 
+            enYakınındakiForm.prepend(metin);
+        });
+    </script>
+</body>
+</html>

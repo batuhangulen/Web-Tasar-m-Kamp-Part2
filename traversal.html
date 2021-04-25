@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="haric">Batuhan</li>
+        <li>Buse</li>
+        <li>Çınar</li>
+        <li>Alperen</li>
+        <li class="haric">Zeynep</li>
+        <li>Salim</li>
+        <li>Berivan</li>
+        <li class="haric">Rümeysa</li>
+        <li>Eda</li>
+        <li class="haric">Enes</li>
+    </ul>
+    <textarea id="ozet" rows=10 cols=50></textarea>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        var liler = $("li");
+        //li'lerin ilki
+        yazdir("İlk Kişi: " + $("li").first().text());
+        //li'lerin sonuncusu
+        yazdir("Son Kişi: " + $("li").last().text());
+        //li'lerin beşincisi
+        yazdir("Beşinci Kişi: " + $("li").eq(4).text());
+        //li'lerin son üçü
+        yazdir("Yedinciden Sonraki Kişiler: " + $("li").eq(6).nextAll().text());
+        //İlk Bulduğu Fuat'tan sonrakini yazdır
+        var sonraki = liler.filter(function(index, li)
+        {
+            return li.innerText == "Salim";
+        }).first().next().text();
+        yazdir("Fuat'tan Sonrası: " + sonraki);
+        //Liste ögelerinin sonuncusunun kardeşlerini italik yap
+        liler.last().siblings().css("font-style", "italic");
+        //Liste ögelerinin beşinciden sonrasını bold yap
+        liler.eq(4).nextAll().css("font-weight", "bold");
+        //Liste ögelerinden haric classına sahip olmayanları getir
+        var dahiller = liler.not(".haric").get().map(x => x.innerText).join(", ");
+        yazdir("Hariç Sınıfına Dahil Olmayanlar: " + dahiller);
+        function yazdir(metin)
+        {
+            var icerik = $("#ozet").val();
+            $("#ozet").val(icerik + metin + "\n" );
+        }
+    </script>
+</body>
+</html>
